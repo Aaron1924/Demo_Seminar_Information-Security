@@ -1,12 +1,42 @@
 <!DOCTYPE html>
 <html>
+    <style>
+        .button {
+          background-color: #4CAF50; /* Green */
+          border: none;
+          color: white;
+          padding: 20px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          border-radius: 4px;
+        }
+        body {
+          background-image: url('assets/12.jpg');
+          background-repeat: no-repeat;
+          background-attachment: fixed; 
+          background-size: 100% 100%;
+        }
+        .select{
+            margin-top:300px
+        }
+        </style>
 <head>
     <title>Home Page</title>
 </head>
 <body>
-    <h1>About Us</h1>
-    <p>This is the Home page.</p>
-    <button onclick="window.location.href='/login'">Login</button>
-    <button onclick="window.location.href='/site'">Role</button>
+    <div align="center">
+        <!-- <p>This is the Home page.</p> -->
+        <button onclick="window.location.href='/site'" class="button">Go to Submit Role Page</button>
+    </div>
 </body>
 </html>
