@@ -1,0 +1,59 @@
+<html>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+<style>
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+body {
+  background-image: url('assets/12.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
+}
+.select{
+    margin-top:300px
+}
+
+.button1 {border-radius: 2px;}
+.button2 {border-radius: 4px;}
+.button3 {border-radius: 8px;}
+.button4 {border-radius: 12px;}
+.button5 {border-radius: 50%;}
+.home {
+  background-color: #4CAF50;;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+</style>
+</head>
+<button onclick="window.location.href='/'" class="home"><i class="fa fa-home"></i> Home</button>
+<form  method="post">
+    <div align="center" id="mainselection">
+      <select name="site" method="post">
+        <option selected>Select Your Position</option>
+        {% for site in sites %}
+        <option value="{{site}}">{{site}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button class="button button1" name="submit" value="submit">Submit</button>
+  </form>

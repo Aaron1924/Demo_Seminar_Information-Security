@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+div.ex1 {
+  background-color:#111;
+  width: 500px;
+  height: 300px;
+  overflow: scroll;
+}
+iframe {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.output {
+    background: #eee;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.left {
+  left: 0;
+  background-color: #111;
+}
+
+.right {
+  right: 0;
+  background-color:#C2C2C2;
+}
+.site{
+    margine-top:30px
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-top:00px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.button1 {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-top:80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.buttonn {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-top:200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+.button1 {border-radius: 2px;}
+
+</style>
+</head>
+<!-- <button onclick="window.location.href='/'">Home</button> -->
+<body>
+<div class="split left">
+    <form  method="post">
+    <button class="button" name="upload" value="upload">upload</button>
+    <div align="center" id="mainselection">
+      <input class="input" type="password" name="Publickey" placeholder="PublickKey">
+      <select name="site" method="post">
+        <option selected>Select Your Record</option>
+        {% for site in sit1 %}
+        <option value="{{site}}">{{site}}</option>
+        {% endfor %}
+      </select>
+      <select name="sit" method="post">
+        <option selected>Select your record position</option>
+        {% for site2 in sit2 %}
+        <option value="{{site2}}">{{site2}}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button class="buttonn button1" name="check" value="check">check</button>
+    <button class="button button1" name="submit" value="submit">submit</button>
+  </form>
+</div>
+<div class="split right">
+    <div class="card">
+    <form  method="post">
+    <iframe id="inlineFrameExample"
+    title="Inline Frame Example"
+    width="600"
+    height="500"
+    src="{{value}}">
+    </iframe>
+    <p>message: {{v}}</p>
+    </form>
+    </div>
+</div>
+</body>
+</html>

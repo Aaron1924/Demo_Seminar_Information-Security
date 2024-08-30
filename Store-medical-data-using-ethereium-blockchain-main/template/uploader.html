@@ -1,0 +1,15 @@
+<html>
+   <body>
+      <form action = "http://localhost:5000/uploader" method = "POST" 
+         enctype = "multipart/form-data">
+         <input type = "file" name = "file" />
+         <select name="site" method="post">
+            <option selected>Select Your Record</option>
+            {% for site in sit1 %}
+            <option value="{{site}}">{{site}}</option>
+            {% endfor %}
+         </select>
+         <input type = "submit"/>
+      </form>   
+   </body>
+</html>
