@@ -44,7 +44,7 @@ print(tx_receipt.contractAddress)
 
 @app.route('/')
 def home(): 
-    return "Homepage for Website"
+    return render_template("home.html")
 
 #session['medical_record']=abi
 @app.route('/site', methods=['GET', 'POST'])
