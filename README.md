@@ -7,23 +7,18 @@ Dự án này là một hệ thống dựa trên blockchain, cho phép lưu tr�
 1. [Tổng Quan](#tổng-quan)
 2. [Tính Năng](#tính-năng)
 3. [Cài Đặt](#cài-đặt)
-4. [Cấu Hình](#cấu-hình)
-5. [Cách Sử Dụng](#cách-sử-dụng)
-   - [Triển Khai Hợp Đồng Thông Minh](#triển-khai-hợp-đồng-thông-minh)
-   - [Tương Tác với Hợp Đồng Thông Minh](#tương-tác-với-hợp-đồng-thông-minh)
-   - [Tải Lên và Truy Xuất Dữ Liệu](#tải-lên-và-truy-xuất-dữ-liệu)
-6. [Mô Tả Tệp Tin](#mô-tả-tệp-tin)
+4. [Cách Sử Dụng](#cách-sử-dụng)
+
 
 ## Tổng Quan
 
-Hệ thống này cho phép người dùng lưu trữ và truy xuất dữ liệu một cách an toàn bằng cách kết hợp blockchain và IPFS. Dữ liệu được mã hóa và có thể được xác thực bằng chữ ký số. Hệ thống cũng hỗ trợ tính năng nhắn tin, nơi các tin nhắn được lưu trữ trên blockchain và có thể được người dùng truy xuất.
+Hệ thống này cho phép người dùng lưu trữ và truy xuất dữ liệu một cách an toàn bằng cách kết hợp blockchain và IPFS. Dữ liệu được mã hóa và có thể được xác thực bằng chữ ký số. 
 
 ## Tính Năng
 
 - **Hợp Đồng Thông Minh:** Hợp đồng thông minh dựa trên Solidity được triển khai trên blockchain Ethereum để xử lý việc lưu trữ, truy xuất dữ liệu và nhắn tin.
 - **Tích Hợp IPFS:** Lưu trữ phi tập trung dữ liệu bằng IPFS, đảm bảo rằng dữ liệu không chỉ an toàn mà còn chống lại việc sửa đổi.
 - **Bảo Mật Mật Mã:** Dữ liệu được mã hóa bằng AES và chữ ký được xác thực bằng RSA, đảm bảo tính toàn vẹn và tính xác thực của dữ liệu.
-- **Hệ Thống Nhắn Tin:** Người dùng có thể gửi và truy xuất tin nhắn được lưu trữ an toàn trên blockchain.
 
 ## Cài Đặt
 
@@ -64,6 +59,15 @@ ipfs init
 ipfs daemon
 ```
 Truy cập thư mục và mở terminal, chạy chương trình với lệnh `py test2.py`
-## Sử dụng
+##Cách sử dụng
 ![fe124f62-7ecf-4823-8f69-386d07d95ee6](https://github.com/user-attachments/assets/f7c289b1-5f58-430d-b03e-437e54ba12cf)
+Trang chủ chương trình
+![f4ba470e-2ede-434c-94f0-20a0e02c687c](https://github.com/user-attachments/assets/645b5f60-a177-4547-8a74-2883986a67ed)
+Lựa chọn vai trò ( Bác sĩ, bệnh nhân, cửa hàng thuốc,...)
+![44250f9c-d242-4fd2-8e4d-3b3672efa702](https://github.com/user-attachments/assets/fc1f74ea-81b5-4fba-940d-2ae0870d71e6)
+Đăng nhập với thông tin của mình 
+![692868da-9dc1-4e88-9595-29fa9bb7165c](https://github.com/user-attachments/assets/be736342-0c20-45ed-8000-74f71156d379)
+Chương trình cho phép nhiều lựa chọn bao gồm upload và kiểm tra chữ kí
+
+
 
