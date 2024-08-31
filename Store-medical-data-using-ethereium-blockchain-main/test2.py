@@ -128,7 +128,6 @@ def upload_file1():
       f = request.files['file']
       print(f)
       new_file = api.add(f)
-      print(account_info)
       session['datatype']=request.form['site']
       datatype = session['datatype']
       print(new_file)
