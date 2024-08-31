@@ -13,33 +13,37 @@ from signature import msg_signature
 ganache_url = configs.GANACHE_URL
 web3 = Web3(Web3.HTTPProvider(ganache_url))
 api = ipfsApi.Client(**configs.ipfsAPI_host)
+with open('contract.sol', 'r') as file:
+    escrow_contract = file.read()
+
+compiled_contract = web3.eth.compileSolidity(escrow_contract)
+# deploy the contract
+contract_interface = compiled_contract['<stdin>:SimpleStorage']
+
+Escrow = web3.eth.contract(
+    abi=contract_interface['abi'],
+    bytecode=contract_interface['bin']
+)
 app = Flask(__name__,
             static_url_path='/assets', 
             static_folder='assets',
             template_folder='template')
 
 app.secret_key = 'any random string'
-
-with open('smartcontract.json') as json_file:
-    abi = json.load(json_file)   	  	
+   	  	
     		
 # set pre-funded account as sender
 web3.eth.defaultAccount = web3.eth.accounts[0]
 #web3.eth.defaultAccount='0xD37266B8447C9095CB2ae7345694192aa417f0B1'
 # Instantiate and deploy contract
-Greeter = web3.eth.contract(abi=abi, bytecode=configs.bytecode)
-# Submit transaction that deploys the contract
-tx_hash = Greeter.constructor().transact({'from':web3.eth.defaultAccount})
-tx_receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
-contract = web3.eth.contract(
-   address=tx_receipt.contractAddress,
-   abi=abi,
-)
+tx_hash = Escrow.constructor().transact()
+tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
     
-    
+contract_address = tx_receipt.contractAddress
 # Wait for the transaction to be mined, and get the transaction receipt
-tx_receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
-print(tx_receipt.contractAddress)
+
+print(contract_address)
+
 
 
 @app.route('/')
