@@ -59,7 +59,7 @@ ipfs init
 ipfs daemon
 ```
 Truy cập thư mục và mở terminal, chạy chương trình với lệnh `py test2.py`
-##Cách sử dụng
+## Cách sử dụng
 ![fe124f62-7ecf-4823-8f69-386d07d95ee6](https://github.com/user-attachments/assets/f7c289b1-5f58-430d-b03e-437e54ba12cf)
 Trang chủ chương trình
 ![f4ba470e-2ede-434c-94f0-20a0e02c687c](https://github.com/user-attachments/assets/645b5f60-a177-4547-8a74-2883986a67ed)
