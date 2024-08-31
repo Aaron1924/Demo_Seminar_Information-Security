@@ -3,6 +3,18 @@ import json
 import ipfsApi
 from werkzeug.utils import secure_filename
 import configs
+import io
+import os
+
+import requests
+import base64
+
+session = {}
+
+auth_token = base64.b64encode(f'{configs.API_KEY}:{configs.API_KEY_SECRET}'.encode()).decode()
+headers = {
+    'Authorization': f'Basic {auth_token}'
+}
 
 from web3 import Web3
 from web3 import Web3, middleware
@@ -67,6 +79,7 @@ def switchinfo():
         privatekey = request.form['PrivateKey']
         #session['address']=address
         session['privatekey']=privatekey
+        print(session)
         #session.pop('gather', None)
         print(session['address'],privatekey)
         if session['gather']=='Patient':
@@ -74,6 +87,7 @@ def switchinfo():
         elif session['gather']=='Doctor':
             return redirect(url_for('patient'))
         return redirect(url_for('switchinfo'))
+        
     return render_template("login.html")
 
 @app.route('/patient',methods=['GET', 'POST'])
@@ -121,11 +135,19 @@ def upload_file():
 def upload_file1():
    if request.method == 'POST':
       f = request.files['file']
-      print(f)
-      new_file = api.add(f)
-      session['datatype']=request.form['site']
+      text_wrapper = io.TextIOWrapper(f.stream, encoding='utf-8')
+      os.makedirs("temp_storage", exist_ok=True)
+      file_path = os.path.join("temp_storage", f.filename)
+      f.save(file_path)
+      print(file_path)
+      new_file = {'file':file_path}
       print(new_file)
-      check.data_upload(contract,session['datatype'],session['address'],new_file['Hash'])
+      response = requests.post(configs.REQUEST_ADD_URL, files=new_file, auth=(configs.API_KEY, configs.API_KEY_SECRET))
+      print(response)
+      hash = response.text.split(",")[1].split(":")[1].replace('"','')
+      session['datatype']=request.form['site']
+      
+      check.data_upload(contract,session['datatype'],session['address'],hash)
       #f.save(secure_filename(f.filename))
       return 'file uploaded successfully'
 
