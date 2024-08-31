@@ -1,6 +1,7 @@
 from flask import Flask,render_template,request,redirect,url_for,session
 import json
-import ipfsApi
+# import ipfsApi
+import ipfshttpclient
 from werkzeug.utils import secure_filename
 import configs
 
@@ -9,10 +10,12 @@ from web3 import Web3, middleware
 from web3.gas_strategies.time_based import medium_gas_price_strategy
 from upload_data import check
 from signature import msg_signature
+session
 # Set up web3 connection with Ganache
 ganache_url = configs.GANACHE_URL
 web3 = Web3(Web3.HTTPProvider(ganache_url))
-api = ipfsApi.Client(**configs.ipfsAPI_host)
+# api = ipfsApi.Client(**configs.ipfsAPI_host)
+api = ipfshttpclient.connect('/ip4/127.0.0.1/tcp/5001/http')
 app = Flask(__name__,
             static_url_path='/assets', 
             static_folder='assets',
@@ -74,6 +77,7 @@ def switchinfo():
         elif session['gather']=='Doctor':
             return redirect(url_for('patient'))
         return redirect(url_for('switchinfo'))
+    print(session)
     return render_template("login.html")
 
 @app.route('/patient',methods=['GET', 'POST'])
@@ -123,6 +127,7 @@ def upload_file1():
       f = request.files['file']
       print(f)
       new_file = api.add(f)
+      print(session)
       session['datatype']=request.form['site']
       print(new_file)
       check.data_upload(contract,session['datatype'],session['address'],new_file['Hash'])
