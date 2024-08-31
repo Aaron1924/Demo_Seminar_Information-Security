@@ -1,4 +1,4 @@
-# Hệ Thống Lưu Trữ và Giao Tiếp Dữ Liệu Dựa Trên Blockchain
+# Hệ Thống Lưu Trữ Dữ Liệu Dựa Trên Blockchain
 
 Dự án này là một hệ thống dựa trên blockchain, cho phép lưu trữ, truy xuất và giao tiếp dữ liệu an toàn giữa các thực thể. Hệ thống sử dụng các hợp đồng thông minh được triển khai trên blockchain Ethereum, IPFS để lưu trữ phi tập trung, và các kỹ thuật mật mã để đảm bảo tính toàn vẹn và bảo mật của dữ liệu.
 
