@@ -10,7 +10,7 @@ from web3 import Web3, middleware
 from web3.gas_strategies.time_based import medium_gas_price_strategy
 from upload_data import check
 from signature import msg_signature
-session
+
 # Set up web3 connection with Ganache
 ganache_url = configs.GANACHE_URL
 web3 = Web3(Web3.HTTPProvider(ganache_url))
@@ -39,7 +39,7 @@ contract = web3.eth.contract(
    abi=abi,
 )
     
-    
+account_info = {'address':None,'privatekey':None} 
 # Wait for the transaction to be mined, and get the transaction receipt
 tx_receipt = web3.eth.wait_for_transaction_receipt(tx_hash)
 print(tx_receipt.contractAddress)
@@ -77,7 +77,8 @@ def switchinfo():
         elif session['gather']=='Doctor':
             return redirect(url_for('patient'))
         return redirect(url_for('switchinfo'))
-    print(session)
+    account_info['privatekey'] = session['privatekey']
+    account_info['address'] = session['address']
     return render_template("login.html")
 
 @app.route('/patient',methods=['GET', 'POST'])
@@ -127,10 +128,11 @@ def upload_file1():
       f = request.files['file']
       print(f)
       new_file = api.add(f)
-      print(session)
+      print(account_info)
       session['datatype']=request.form['site']
+      datatype = session['datatype']
       print(new_file)
-      check.data_upload(contract,session['datatype'],session['address'],new_file['Hash'])
+      check.data_upload(contract,datatype,account_info['address'],new_file['Hash'])
       #f.save(secure_filename(f.filename))
       return 'file uploaded successfully'
 
