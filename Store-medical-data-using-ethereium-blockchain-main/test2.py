@@ -23,7 +23,7 @@ app = Flask(__name__,
 
 app.secret_key = 'any random string'
 
-with open('smartcontract.json') as json_file:
+with open('smartcontract.txt') as json_file:
     abi = json.load(json_file)   	  	
     		
 # set pre-funded account as sender
